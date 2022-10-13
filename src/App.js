@@ -1,21 +1,23 @@
 import './App.css';
-import ItemListContainer from './components/ItemListContainer';
 import ListaProductos from './components/ListaProductos';
-import NavBar from './components/NavBar'
-import ProductCard from './components/ProductCard';
+import Home from './components/Home';
+import ProductDetail from './components/ProductDetail';
+import {BrowserRouter, Routes, Route} from "react-router-dom";  
 
 function App() {
 
   return (
-    <div className="App">
-      
-      <header>
-        <NavBar></NavBar>
-      </header>
-      <ItemListContainer greeting="Bienvenido a Montevideo Wrapping"></ItemListContainer>
-      <ListaProductos></ListaProductos>
+    <BrowserRouter>
+      <div className="App">
 
-    </div>
+        <Routes>
+          <Route path='/' element={<Home/>} />
+          <Route path='/tienda' element={<ListaProductos/>} />
+          <Route path='/tienda/:id' element={<ProductDetail/>} />
+        </Routes>
+
+      </div>
+    </BrowserRouter>
   );
 }
 

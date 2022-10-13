@@ -1,0 +1,26 @@
+[
+    {
+       "name":"Casco LS2 Carbon",
+       "description":"Casco de fibra de carbono diseñado para ruta",
+       "price":"570",
+       "id":"0"
+    },
+    {
+       "name":"Casco LS2 Arrow",
+       "description":"Casco de alto rendimiento para pilotos",
+       "price":"440",
+       "id":"1"
+    },
+    {
+       "name":"Casco LS2 Pioneer",
+       "description":"Casco de competición ultra liviano",
+       "price":"480",
+       "id":"2"
+    },
+    {
+       "name":"Casco LS2 X-FORCE",
+       "description":"Casco de cross en fibra de carbono",
+       "price":"500",
+       "id":"3"
+    }
+]
