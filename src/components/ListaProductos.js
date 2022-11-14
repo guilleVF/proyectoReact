@@ -1,31 +1,33 @@
-import React from 'react'
+import { collection, getDocs, getFirestore } from 'firebase/firestore'
+import { useEffect, useState} from 'react'
 import ProductCard from './ProductCard'
 
 const ListaProductos = () => {
+  
 
-    let arrayProductos = [
-        {name:"Casco LS2 Carbon",
-        description:"Casco de fibra de carbono diseñado para ruta",
-        price:"570",
-        id:"0"},
-        {name:"Casco LS2 Arrow",
-        description:"Casco de alto rendimiento para pilotos",
-        price:"440",
-        id:"1"},
-        {name:"Casco LS2 Pioneer",
-        description:"Casco de competición ultra liviano",
-        price:"480",
-        id:"2"},
-        {name:"Casco LS2 X-FORCE",
-        description:"Casco de cross en fibra de carbono",
-        price:"500",
-        id:"3"}
-    ]
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState([true])
+
+    useEffect(() => {
+      getProducts()
+    }, [])
+
+    const getProducts = () => { 
+      const db = getFirestore()
+      const productsCollection = collection(db, 'productos') 
+      getDocs(productsCollection).then( res => {
+        const productsData = res.docs.map ( d => ({id: d.id, ...d.data()}) )
+        setProducts( productsData )
+        setLoading(false)
+      } )
+    }
+    
 
   return (
     <div className='listaProductos flex max-w-full flex-wrap justify-center'>
-        {arrayProductos.map(element => {
-                    return <ProductCard name={element.name} description={element.description} price={element.price} id={element.id}></ProductCard>
+        { loading ? <h1 className='p-10 text-xl'>Cargando productos...</h1>
+          : products.map(element => {
+                    return <ProductCard key={element.id} name={element.name} description={element.description} price={element.price} img={element.img} id={element.id}></ProductCard>
         })}
     </div>
   )
