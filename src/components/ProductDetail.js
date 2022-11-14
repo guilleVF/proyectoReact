@@ -37,7 +37,7 @@ return (
             <NavBar></NavBar>
         </header>
         {loading ? <h1 className='m-auto py-52 text-xl'>Cargando...</h1>:
-        <div className='productCard py-20 max-w-md flex-col text-center shadow-xl shadow-gray-300 rounded-lg m-auto'>
+        <div className='productCard py-20 max-w-md flex-col text-center m-auto'>
         <div className='productCardImg w-full px-28 py-10'>
             <img src={product.img} alt="" 
             className=''/>
